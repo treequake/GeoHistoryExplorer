@@ -21,6 +21,19 @@ Stage 0 does not build the full application. It establishes the repository struc
 - Keep AI downstream from deterministic, source-grounded evidence.
 - Design each stage so it is useful on its own.
 
+## Stage 0 Package
+
+The first Stage 0 architecture package contains:
+
+- [Stage 0 package summary](docs/stage-0/README.md)
+- [Stage 1 acceptance criteria](docs/stage-0/stage-1-acceptance-criteria.md)
+- [Evidence model](docs/models/evidence-model.md)
+- [Precision model](docs/models/precision-model.md)
+- [Source and provenance model](docs/models/source-provenance-model.md)
+- [Draft GeoHistory Pack schema](schema/geohistory-pack.schema.json)
+- [Draft manifest example](manifests/geohistory-pack.manifest.example.yaml)
+- [Architecture Decision Records](ARCHITECTURAL_DECISIONS/)
+
 ## Repository Map
 
 - `VISION.md` - long-lived scientific purpose and project boundaries.
