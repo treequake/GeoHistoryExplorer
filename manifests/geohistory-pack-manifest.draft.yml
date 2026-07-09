@@ -1,0 +1,52 @@
+manifest_version: "0.1-draft"
+pack_id: "example.pack.id"
+title: "Example GeoHistory Pack"
+description: "Short description of the pack scope."
+domain: "historical-seismology"
+schema_version: "0.1-draft"
+created: "YYYY-MM-DD"
+updated: "YYYY-MM-DD"
+
+contacts:
+  - name: "Pack maintainer"
+    role: "maintainer"
+    contact: "contact method or repository issue tracker"
+
+scope:
+  spatial: "Describe spatial coverage without inventing precision."
+  temporal: "Describe temporal coverage without inventing precision."
+  source_basis: "Describe the kinds of sources included."
+  limitations:
+    - "Known limitation or omission."
+
+contents:
+  sources: "data/sources.*"
+  evidence_records: "data/evidence_records.*"
+  derived_observations: "data/derived_observations.*"
+  exports: "exports/"
+  qa_reports: "qa/"
+
+build:
+  generated_by: "process or command name"
+  generated_at: "YYYY-MM-DDTHH:MM:SSZ"
+  code_version: "commit or release identifier"
+  deterministic: true
+
+validation:
+  status: "draft"
+  schema: "schema/geohistory-pack.schema.json"
+  warnings:
+    - "Validation warning or known issue."
+
+provenance:
+  citation: "How to cite this pack."
+  rights: "Rights and access summary."
+  source_policy: "Describe how source text, excerpts, or references are handled."
+
+exports:
+  - path: "exports/example.gpkg"
+    type: "GeoPackage"
+    generated_from:
+      - "data/derived_observations.*"
+    warnings:
+      - "Export-specific warning."

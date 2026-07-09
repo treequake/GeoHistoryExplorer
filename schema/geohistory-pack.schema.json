@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://treequake.github.io/GeoHistoryExplorer/schema/geohistory-pack.schema.json",
+  "title": "GeoHistory Pack Draft Schema",
+  "type": "object",
+  "required": ["pack_id", "schema_version", "title", "manifest", "sources", "evidence_records"],
+  "properties": {
+    "pack_id": {
+      "type": "string",
+      "description": "Stable identifier for the pack."
+    },
+    "schema_version": {
+      "type": "string",
+      "description": "Schema version used by this pack."
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "manifest": {
+      "type": "string",
+      "description": "Path to the pack manifest."
+    },
+    "sources": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/source" }
+    },
+    "evidence_records": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/evidence_record" }
+    },
+    "derived_observations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/derived_observation" }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": ["source_id", "title", "source_type", "citation"],
+      "properties": {
+        "source_id": { "type": "string" },
+        "title": { "type": "string" },
+        "source_type": { "type": "string" },
+        "citation": { "type": "string" },
+        "date": { "type": "string" },
+        "language": { "type": "string" },
+        "rights": { "type": "string" },
+        "access": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    },
+    "precision": {
+      "type": "object",
+      "required": ["kind"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["exact", "stated", "approximate", "range", "relative", "unknown", "unstated"]
+        },
+        "scale": { "type": "string" },
+        "original_expression": { "type": "string" },
+        "note": { "type": "string" }
+      }
+    },
+    "claim": {
+      "type": "object",
+      "properties": {
+        "original": { "type": "string" },
+        "normalized": {},
+        "precision": { "$ref": "#/$defs/precision" },
+        "note": { "type": "string" }
+      }
+    },
+    "evidence_record": {
+      "type": "object",
+      "required": ["evidence_id", "source_id", "source_locator"],
+      "properties": {
+        "evidence_id": { "type": "string" },
+        "source_id": { "type": "string" },
+        "source_locator": { "type": "string" },
+        "original_text": { "type": "string" },
+        "translation": { "type": "string" },
+        "claim_type": { "type": "string" },
+        "time": { "$ref": "#/$defs/claim" },
+        "place": { "$ref": "#/$defs/claim" },
+        "measurement": { "$ref": "#/$defs/claim" },
+        "uncertainty_note": { "type": "string" }
+      }
+    },
+    "derived_observation": {
+      "type": "object",
+      "required": ["observation_id", "observation_type", "evidence_ids", "provenance"],
+      "properties": {
+        "observation_id": { "type": "string" },
+        "observation_type": { "type": "string" },
+        "evidence_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "time": { "$ref": "#/$defs/claim" },
+        "geometry": { "$ref": "#/$defs/claim" },
+        "properties": { "type": "object" },
+        "provenance": {
+          "type": "object",
+          "required": ["method", "generated_by"],
+          "properties": {
+            "method": { "type": "string" },
+            "generated_by": { "type": "string" },
+            "generated_at": { "type": "string" },
+            "assumptions": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "warnings": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
