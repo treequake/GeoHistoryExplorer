@@ -1,6 +1,6 @@
 # Architecture
 
-GeoHistory Explorer is organized around durable, inspectable **GeoHistory Packs**. A pack contains source records, evidence items, normalized observations, derived exports, manifests, validation results, and provenance metadata.
+GeoHistory Explorer is organized around durable, inspectable **GeoHistory Packs**. A pack contains source records, evidence records, derived observations, exports, manifests, validation results, and provenance metadata.
 
 The architecture is intentionally stage-based. Stage 0 defines the repository foundation and evidence model. Stage 1 proves the model with a toy pack and deterministic exports. Later stages may add richer query and presentation layers only after the pack format is useful on its own.
 
@@ -20,6 +20,14 @@ A pack should contain:
 - deterministic export artifacts
 - QA reports and validation results
 - a manifest describing contents, build process, versions, and limitations
+
+### Evidence Model
+
+The model separates source descriptions, source-grounded evidence records, and derived observations.
+
+This separation is architectural, not cosmetic. It prevents normalized observations and exports from replacing the original evidentiary claims they depend on.
+
+See [docs/models/evidence-model.md](docs/models/evidence-model.md).
 
 ### Engine
 
