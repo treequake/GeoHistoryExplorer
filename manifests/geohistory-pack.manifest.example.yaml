@@ -1,0 +1,52 @@
+manifest_version: "0.1-draft"
+pack_id: "org.example.toy-geohistory-pack"
+title: "Toy GeoHistory Pack"
+description: "Stage 1 toy pack used to test GeoHistory Explorer architecture."
+domain: "historical-seismology"
+schema_version: "0.1-draft"
+created: "YYYY-MM-DD"
+updated: "YYYY-MM-DD"
+
+contacts:
+  - name: "Pack maintainer"
+    role: "maintainer"
+    contact: "repository issue tracker or maintainer contact"
+
+scope:
+  spatial: "Describe spatial coverage using only supported precision."
+  temporal: "Describe temporal coverage using only supported precision."
+  source_basis: "Describe included source types and selection limits."
+  limitations:
+    - "This is a toy pack, not an authoritative catalog."
+
+contents:
+  sources: "data/sources.json"
+  evidence_records: "data/evidence-records.json"
+  derived_observations: "data/derived-observations.json"
+  exports: "exports/"
+  qa_reports: "qa/"
+
+build:
+  generated_by: "documented command or process"
+  generated_at: "YYYY-MM-DDTHH:MM:SSZ"
+  code_version: "commit or release identifier"
+  deterministic: true
+
+validation:
+  status: "draft"
+  schema: "schema/geohistory-pack.schema.json"
+  warnings:
+    - "List validation warnings here."
+
+provenance:
+  citation: "How to cite this pack."
+  rights: "Rights and access summary."
+  source_policy: "Describe how source text, excerpts, references, and restricted material are handled."
+
+exports:
+  - path: "exports/toy-pack.gpkg"
+    type: "GeoPackage"
+    generated_from:
+      - "data/derived-observations.json"
+    warnings:
+      - "Describe any precision, uncertainty, or disagreement that the export cannot fully express."
